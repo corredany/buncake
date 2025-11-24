@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BunCake Bakery - Personaliza tu pastel en la web y visualízalo en AR con nuestra app">
+    <title>BunCake Bakery - Personaliza tu Pastel</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">🧁</div>
+                <span>BunCake Bakery</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#configurador" class="nav-link">Configurador 3D</a></li>
+                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1 class="fade-in">Diseña Tu Pastel en 3D</h1>
+            <p class="fade-in">Personaliza aquí, visualiza en Realidad Aumentada</p>
+            <a href="#configurador" class="cta-button fade-in">Empezar a Diseñar</a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="how-it-works">
+        <div class="container">
+            <h2>¿Cómo Funciona?</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🎨</div>
+                    <h3>Personaliza en Web</h3>
+                    <p>Selecciona tamaño, sabor, cobertura y decoraciones de tu pastel</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">📱</div>
+                    <h3>Genera tu Código</h3>
+                    <p>Crea un código QR o enlace directo con tu diseño</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">📷</div>
+                    <h3>Visualiza en AR</h3>
+                    <p>Abre nuestra app y ve tu pastel en realidad aumentada</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🛒</div>
+                    <h3>Ordena</h3>
+                    <p>Confirma tu pedido y recíbelo en tu domicilio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Configurator Section -->
+    <section id="configurador" class="configurator-section">
+        <div class="container">
+            <h2>Configurador de Pasteles 3D</h2>
+            <p class="subtitle">Personaliza cada detalle de tu pastel perfecto</p>
+
+            <div class="configurator-wrapper">
+                <!-- Configurator Form -->
+                <div class="configurator-form">
+                    <div class="form-section">
+                        <h3>🎂 Tamaño del Pastel</h3>
+                        <div class="option-group">
+                            <label class="option-card">
+                                <input type="radio" name="size" value="small" data-price="200" checked>
+                                <div class="option-content">
+                                    <span class="option-icon">🧁</span>
+                                    <span class="option-name">20cm</span>
+                                    <span class="option-price">$200</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="size" value="medium" data-price="300">
+                                <div class="option-content">
+                                    <span class="option-icon">🎂</span>
+                                    <span class="option-name">30cm</span>
+                                    <span class="option-price">$300</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="size" value="large" data-price="400">
+                                <div class="option-content">
+                                    <span class="option-icon">🎂🎂🎂</span>
+                                    <span class="option-name">3 Pisos</span>
+                                    <span class="option-price">$400</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🍰 Sabor del Bizcocho</h3>
+                        <div class="option-group">
+                            <label class="option-card">
+                                <input type="radio" name="flavor" value="vanilla" data-price="78" checked>
+                                <div class="option-content">
+                                    <span class="option-icon">🤍</span>
+                                    <span class="option-name">Vainilla</span>
+                                    <span class="option-price">$78</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="flavor" value="chocolate" data-price="85">
+                                <div class="option-content">
+                                    <span class="option-icon">🤎</span>
+                                    <span class="option-name">Chocolate</span>
+                                    <span class="option-price">$85</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="flavor" value="redvelvet" data-price="90">
+                                <div class="option-content">
+                                    <span class="option-icon">❤️</span>
+                                    <span class="option-name">Red Velvet</span>
+                                    <span class="option-price">$90</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section" style="display: none;">
+                        <h3>🍫 Cobertura</h3>
+                        <div class="option-group">
+                            <label class="option-card">
+                                <input type="radio" name="coverage" value="chocolate" data-price="76" checked>
+                                <div class="option-content">
+                                    <span class="option-icon">🍫</span>
+                                    <span class="option-name">Chocolate</span>
+                                    <span class="option-price">$76</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="coverage" value="cream" data-price="72">
+                                <div class="option-content">
+                                    <span class="option-icon">🧈</span>
+                                    <span class="option-name">Queso Crema</span>
+                                    <span class="option-price">$72</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="coverage" value="buttercream" data-price="68">
+                                <div class="option-content">
+                                    <span class="option-icon">🍰</span>
+                                    <span class="option-name">Buttercream</span>
+                                    <span class="option-price">$68</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section" style="display: none;">
+                        <h3>💝 Relleno</h3>
+                        <div class="option-group">
+                            <label class="option-card">
+                                <input type="radio" name="filling" value="creamcheese" data-price="52" checked>
+                                <div class="option-content">
+                                    <span class="option-icon">🧀</span>
+                                    <span class="option-name">Queso Crema</span>
+                                    <span class="option-price">$52</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="filling" value="fruits" data-price="48">
+                                <div class="option-content">
+                                    <span class="option-icon">🍓</span>
+                                    <span class="option-name">Frutas</span>
+                                    <span class="option-price">$48</span>
+                                </div>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="filling" value="chocolate" data-price="55">
+                                <div class="option-content">
+                                    <span class="option-icon">🍫</span>
+                                    <span class="option-name">Chocolate</span>
+                                    <span class="option-price">$55</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>🌸 Decoración (Opcional)</h3>
+                        <div class="option-group decorations">
+                            <label class="option-card small">
+                                <input type="checkbox" name="decoration" value="flowers" data-price="30">
+                                <div class="option-content">
+                                    <span class="option-icon">🌸</span>
+                                    <span class="option-name">Flores</span>
+                                    <span class="option-price">+$30</span>
+                                </div>
+                            </label>
+                            <label class="option-card small">
+                                <input type="checkbox" name="decoration" value="sprinkles" data-price="15">
+                                <div class="option-content">
+                                    <span class="option-icon">✨</span>
+                                    <span class="option-name">Sprinkles</span>
+                                    <span class="option-price">+$15</span>
+                                </div>
+                            </label>
+                            <label class="option-card small">
+                                <input type="checkbox" name="decoration" value="berries" data-price="25">
+                                <div class="option-content">
+                                    <span class="option-icon">🍓</span>
+                                    <span class="option-name">Frutos</span>
+                                    <span class="option-price">+$25</span>
+                                </div>
+                            </label>
+                            <label class="option-card small">
+                                <input type="checkbox" name="decoration" value="message" data-price="20">
+                                <div class="option-content">
+                                    <span class="option-icon">💌</span>
+                                    <span class="option-name">Mensaje</span>
+                                    <span class="option-price">+$20</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="messageSection" style="display: none;">
+                        <h3>💌 Tu Mensaje Personalizado</h3>
+                        <input type="text" id="customMessage" class="form-control" placeholder="Ej: Feliz Cumpleaños María" maxlength="30">
+                        <small>Máximo 30 caracteres</small>
+                    </div>
+                </div>
+
+                <!-- Summary Panel -->
+                <div class="summary-panel">
+                    <h3>📋 Resumen de tu Pastel</h3>
+                    
+                    <div class="summary-content" id="summaryContent">
+                        <div class="summary-item">
+                            <span class="summary-label">Tamaño:</span>
+                            <span class="summary-value" id="summarySize">20cm</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Sabor:</span>
+                            <span class="summary-value" id="summaryFlavor">Vainilla</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Cobertura:</span>
+                            <span class="summary-value" id="summaryCoverage">Chocolate</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Relleno:</span>
+                            <span class="summary-value" id="summaryFilling">Queso Crema</span>
+                        </div>
+                        <div class="summary-item decorations" id="summaryDecorations" style="display: none;">
+                            <span class="summary-label">Decoraciones:</span>
+                            <span class="summary-value" id="summaryDecorationsList"></span>
+                        </div>
+                    </div>
+
+                    <div class="total-section">
+                        <div class="total-price-display">
+                            <span>Total:</span>
+                            <span class="price" id="totalPrice">$406</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-primary btn-block" id="viewInARBtn">
+                            <span class="btn-icon">📱</span>
+                            Ver en Realidad Aumentada
+                        </button>
+                        
+                        <button class="btn-secondary btn-block" id="generateQRBtn">
+                            <span class="btn-icon">📷</span>
+                            Generar Código QR
+                        </button>
+
+                        <button class="btn-secondary btn-block" id="shareConfigBtn">
+                            <span class="btn-icon">🔗</span>
+                            Compartir Configuración
+                        </button>
+                    </div>
+
+                    <!-- QR Code Container -->
+                    <div class="qr-container" id="qrContainer" style="display: none;">
+                        <h4>Escanea con tu App</h4>
+                        <div id="qrcode"></div>
+                        <p class="qr-instructions">Abre la app BunCake y escanea este código para ver tu diseño en AR</p>
+                    </div>
+
+                    <!-- Configuration URL -->
+                    <div class="config-url-container" id="configUrlContainer" style="display: none;">
+                        <h4>URL de Configuración</h4>
+                        <div class="url-display">
+                            <input type="text" id="configUrl" readonly class="form-control">
+                            <button class="btn-copy" id="copyUrlBtn">📋 Copiar</button>
+                        </div>
+                        <p class="url-instructions">Comparte esta URL o ábrela en tu dispositivo móvil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="products">
+        <div class="container">
+            <h2>Pasteles</h2>
+            <p class="subtitle">O elige uno de nuestros diseños populares</p>
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download">
+        <div class="container">
+            <h2>Descarga Nuestra App</h2>
+            <p>Para visualizar tus diseños en realidad aumentada, descarga nuestra aplicación</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn apple">
+                    <span class="app-icon">🍎</span>
+                    <div>
+                        <small>Descarga en</small>
+                        <strong>App Store</strong>
+                    </div>
+                </a>
+                <a href="#" class="app-btn android">
+                    <span class="app-icon">🤖</span>
+                    <div>
+                        <small>Disponible en</small>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                <div class="logo-icon">🧁</div>
+                <span>BunCake Bakery</span>
+            </div>
+            <p>Pasteles artesanales con tecnología AR</p>
+            <p>📍 Victoria de Durango, Durango, México</p>
+            <p>📞 Contáctanos para pedidos especiales</p>
+            <div class="social-links">
+                <a href="#" title="Facebook" class="social-link">📘</a>
+                <a href="#" title="Instagram" class="social-link">📷</a>
+                <a href="#" title="WhatsApp" class="social-link">💬</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2025 BunCake Bakery. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script src="configurator.js"></script>
+</body>
+</html>
