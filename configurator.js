@@ -21,11 +21,11 @@ const prices = {
 };
 
 const PRICES = {
-    size: { small: 200, medium: 300, large: 400 },
-    flavor: { vanilla: 78, chocolate: 85, redvelvet: 90 },
+    size: { small: 70, medium: 150, large: 300 },
+    flavor: { vanilla: 0, chocolate: 0, redvelvet: 20 },
     coverage: { chocolate: 0, cream: 0, buttercream: 0 },
     filling: { creamcheese: 0, fruits: 0, chocolate: 0 },
-    decorations: { flowers: 30, sprinkles: 15, berries: 25, message: 20 }
+    decorations: { flowers: 30, sprinkles: 15, berries: 25 }
 };
 
 // ========================================
