@@ -5,47 +5,39 @@
 const products = [
     {
         id: 1,
-        name: '3 Leches Vainilla',
+        name: 'Pastel de Oreo',
         price: 230,
-        icon: '🍰',
-        description: 'Esponjoso pastel tradicional bañado en tres tipos de leche, con suave sabor a vainilla'
+        icon: 'images/Chocolate.png',
+        description: 'Delicioso pastel de chocolate con capas de galletas Oreo trituradas y crema de vainilla. Decorado con galletas enteras.'
     },
     {
         id: 2,
-        name: 'Red Velvet',
+        name: 'Pastel de Té Verde',
         price: 230,
-        icon: '❤️',
-        description: 'Clásico irresistible de textura suave y esponjosa, con delicado sabor a cacao y cobertura de betún de queso crema'
+        icon: 'images/Image_Green_Tea_Cream.png',
+        description: 'Esponjoso pastel de té matcha con sabor suave y natural. Cubierto con crema de queso y decorado con polvo de té verde.'
     },
     {
         id: 3,
-        name: 'Cheesecake',
-        price: 60,
-        icon: '🍓',
-        description: 'Cremoso pay de queso individual con base de galleta y topping a elegir'
+        name: 'Pastel Arcoíris',
+        price: 230,
+        icon: 'images/Image_Rainbow.png',
+        description: 'Vibrante pastel de capas multicolores con betún de vainilla. Perfecto para celebraciones llenas de alegría y color.'
     },
     {
         id: 4,
-        name: 'Pay de Queso',
-        price: 50,
-        icon: '🥮',
-        description: 'Tradicional pay de queso individual, suave y delicioso'
+        name: 'Pastel de Kiwi',
+        price: 230,
+        icon: 'images/Image_Qiiwi.png',
+        description: 'Refrescante pastel con suave crema de kiwi natural y trozos de fruta fresca. Ligero y perfecto para el verano.'
     },
     {
         id: 5,
-        name: 'Rol de Canela',
-        price: 30,
-        icon: '🧁',
-        description: 'Suave pan enrollado con canela y glaseado dulce'
+        name: 'Pastel de Fresas',
+        price: 230,
+        icon: 'images/Image_Strawberry_Cream.png',
+        description: 'Clásico pastel de vainilla con crema chantilly y fresas frescas naturales. Dulce, ligero y delicioso.'
     },
-    {
-        id: 6,
-        name: 'Dona Glaseada',
-        price: 25,
-        icon: '🍩',
-        description: 'Esponjosas donas con variedad de glaseados y decoraciones',
-        priceLabel: 'Desde $25'
-    }
 ];
 
 // ========================================
@@ -87,12 +79,14 @@ function initMobileMenu() {
 
 function renderProducts() {
     const productsGrid = document.getElementById('productsGrid');
-    
+
     if (!productsGrid) return;
 
     productsGrid.innerHTML = products.map(product => `
         <div class="product-card" data-product-id="${product.id}">
-            <div class="product-image">${product.icon}</div>
+            <div class="product-image">
+                <img src="${product.icon}" alt="${product.name}">
+            </div>
             <div class="product-info">
                 <h3>${product.name}</h3>
                 <p class="product-price">${product.priceLabel || '$' + product.price}</p>
@@ -104,16 +98,16 @@ function renderProducts() {
 
     // Agregar efecto hover mejorado
     document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
         });
 
         // Click en producto (para futuras funcionalidades)
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             const productId = this.getAttribute('data-product-id');
             showProductDetails(productId);
         });
@@ -142,7 +136,7 @@ function initPriceCalculator() {
     if (!calculateBtn) return;
 
     calculateBtn.addEventListener('click', calculatePrice);
-    
+
     if (orderBtn) {
         orderBtn.addEventListener('click', handleOrder);
     }
@@ -182,13 +176,13 @@ function calculatePrice() {
 
     // Construir resultado
     let resultHTML = '';
-    
+
     if (total === 0) {
         resultHTML = '<p class="empty-message">Selecciona las opciones para ver el precio</p>';
         if (orderBtn) orderBtn.disabled = true;
     } else {
         const items = [];
-        
+
         if (sizeValue > 0) items.push({ text: sizeText, value: sizeValue });
         if (flavorValue > 0) items.push({ text: flavorText, value: flavorValue });
         if (coverageValue > 0) items.push({ text: coverageText, value: coverageValue });
@@ -226,31 +220,31 @@ function handleOrder() {
     const flavorSelect = document.getElementById('cakeFlavor');
     const coverageSelect = document.getElementById('cakeCoverage');
     const fillingSelect = document.getElementById('cakeFilling');
-    
+
     const sizeText = sizeSelect.options[sizeSelect.selectedIndex].text;
     const flavorText = flavorSelect.options[flavorSelect.selectedIndex].text;
     const coverageText = coverageSelect.options[coverageSelect.selectedIndex].text;
     const fillingText = fillingSelect.options[fillingSelect.selectedIndex].text;
-    
-    const total = parseInt(sizeSelect.value) + parseInt(flavorSelect.value) + 
-                  parseInt(coverageSelect.value) + parseInt(fillingSelect.value);
+
+    const total = parseInt(sizeSelect.value) + parseInt(flavorSelect.value) +
+        parseInt(coverageSelect.value) + parseInt(fillingSelect.value);
 
     // Crear mensaje para WhatsApp
     const message = `🧁 *Nuevo Pedido BunCake*\n\n` +
-                   `*Detalles del pastel:*\n` +
-                   `• ${sizeText}\n` +
-                   `• ${flavorText}\n` +
-                   `• ${coverageText}\n` +
-                   `• ${fillingText}\n\n` +
-                   `*Total:* $${total} MXN\n\n` +
-                   `¿Podrías confirmar disponibilidad?`;
+        `*Detalles del pastel:*\n` +
+        `• ${sizeText}\n` +
+        `• ${flavorText}\n` +
+        `• ${coverageText}\n` +
+        `• ${fillingText}\n\n` +
+        `*Total:* $${total} MXN\n\n` +
+        `¿Podrías confirmar disponibilidad?`;
 
     // Codificar mensaje para URL
     const encodedMessage = encodeURIComponent(message);
-    
+
     // Número de WhatsApp (reemplazar con el número real)
     const whatsappNumber = '5218121234567'; // Cambiar por el número real
-    
+
     // Abrir WhatsApp
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
 }
@@ -261,10 +255,10 @@ function handleOrder() {
 
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
-    
+
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -280,20 +274,20 @@ function initContactForm() {
 
         // Crear mensaje para WhatsApp
         const whatsappMessage = `📧 *Nuevo Mensaje de Contacto*\n\n` +
-                               `*Nombre:* ${name}\n` +
-                               `*Email:* ${email}\n` +
-                               `*Teléfono:* ${phone}\n\n` +
-                               `*Mensaje:*\n${message}`;
+            `*Nombre:* ${name}\n` +
+            `*Email:* ${email}\n` +
+            `*Teléfono:* ${phone}\n\n` +
+            `*Mensaje:*\n${message}`;
 
         const encodedMessage = encodeURIComponent(whatsappMessage);
         const whatsappNumber = '5218121234567'; // Cambiar por el número real
-        
+
         // Abrir WhatsApp
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
 
         // Limpiar formulario
         contactForm.reset();
-        
+
         // Mostrar mensaje de éxito
         alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
     });
@@ -305,9 +299,9 @@ function initContactForm() {
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            
+
             // Ignorar enlaces vacíos
             if (href === '#') {
                 e.preventDefault();
@@ -315,10 +309,10 @@ function initSmoothScroll() {
             }
 
             const target = document.querySelector(href);
-            
+
             if (target) {
                 e.preventDefault();
-                
+
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -353,7 +347,7 @@ function initScrollAnimations() {
 
     // Observar elementos
     const animatedElements = document.querySelectorAll('.feature-card, .product-card, .design-feature');
-    
+
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -368,13 +362,13 @@ function initScrollAnimations() {
 
 function initDownloadAppButton() {
     const downloadBtn = document.getElementById('downloadAppBtn');
-    
+
     if (!downloadBtn) return;
 
-    downloadBtn.addEventListener('click', function() {
+    downloadBtn.addEventListener('click', function () {
         // Aquí puedes redirigir a las tiendas de apps
         alert('¡Próximamente disponible en App Store y Google Play!\n\nPor ahora, contáctanos por WhatsApp para hacer tu pedido.');
-        
+
         // Opcional: redirigir a WhatsApp
         const whatsappNumber = '5218121234567';
         const message = encodeURIComponent('Hola, me interesa la app de BunCake para diseñar pasteles en AR 🧁');
@@ -389,7 +383,7 @@ function initDownloadAppButton() {
 function initThemeToggle() {
     // Detectar preferencia del sistema
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Esta funcionalidad se puede expandir más adelante
 }
 
@@ -397,9 +391,9 @@ function initThemeToggle() {
 // INICIALIZACIÓN GLOBAL
 // ========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('🧁 BunCake Bakery - Website cargado correctamente');
-    
+
     // Inicializar todas las funcionalidades
     initMobileMenu();
     renderProducts();
@@ -408,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initScrollAnimations();
     initDownloadAppButton();
-    
+
     console.log('✅ Todas las funcionalidades inicializadas');
 });
 
@@ -416,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // MANEJO DE ERRORES GLOBAL
 // ========================================
 
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
     console.error('Error detectado:', e.error);
 });
 
