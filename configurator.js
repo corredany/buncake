@@ -13,8 +13,8 @@ const config = {
 };
 
 const prices = {
-    size: 200,
-    flavor: 78,
+    size: 70,
+    flavor: 0,
     coverage: 0,  // No se cobra (oculto)
     filling: 0,   // No se cobra (oculto)
     decorations: 0
